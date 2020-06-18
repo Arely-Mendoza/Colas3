@@ -1,0 +1,107 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package com.mycompany.projectcolitas;
+import java.util.Scanner;
+/**
+ *
+ * @author are97
+ */
+public class NewClassColitititas {
+int MAX=100;
+ int i=0;
+int R=10, aux;
+int num[]=new int[R];
+    
+    public void llenarcola(){
+        num[i] =(int) (Math.random() * MAX);
+            for(int j=0; j<i;j++){
+            if(num[i]==num[j]){
+                           i--;
+           }
+            }
+         num[i] =(int) (Math.random() * MAX);           
+                   for ( i=0; i< R; i++) {
+                num[i] =(int) (Math.random() * MAX);
+                   for(int j=0; j<i;j++){
+                       if(num[i]==num[j]){
+                           i--;
+                       }
+                   }
+                    System.out.println(""+num[i]);
+    }   
+                    
+            }      
+    public void mostrarcola(){
+        if(MAX>0){
+                    System.out.println("Los numeros son:");
+                    for(i = 0; i < R; i++){
+                    System.out.println("Posicion en cola["+i+"]=" +num[i]);
+                    }
+                    }else{
+                        System.out.println("La cola esta vacia");
+                    }
+    }
+    public void ordenarcola(){
+         for(int j=0;j<R;j++){
+                        for( i=0;i<R-1;i++){
+                            if(num[i]>num[i+1]){
+                             aux=num[i];
+                             num[i]=num[i+1];
+                             num[i+1]=aux;
+                              
+                            }
+                        }
+                    } 
+                    {
+                        System.out.println("Los valores estan ordenados correctamente");
+                    }
+    }
+    public void vaciarcola(){
+        for(int i=0; i<R; i++){
+                       if(num[i]>num[i++]){
+                             aux=num[i];
+                             num[i]=num[i-1];
+                             num[i+1]=aux;
+                            }
+                           i--;
+                    System.out.println("La cola esta vacia");
+    }                       
+    }
+    public static void main(String[] args) {
+        Scanner leer=new Scanner(System.in);
+       NewClassColitititas cola= new NewClassColitititas();
+        int opcion;      
+        System.out.println("Hola! Elige una opcion");
+        do{
+            
+              System.out.println("1-Llenar");
+              System.out.println("2-Mostrar");
+              System.out.println("3-Ordenar");
+              System.out.println("4-Vaciar");
+               System.out.println("5-Salir");
+            
+        opcion = leer.nextInt();
+        
+        switch (opcion){
+            
+            case 1:
+               cola.llenarcola();
+                break;               
+            case 2:
+              cola.mostrarcola();              
+                break;
+            case 3:
+                cola.ordenarcola();
+                break;
+                
+            case 4:
+                cola.vaciarcola();
+                break;  
+        }
+      }
+      while (opcion!=5);  
+    }
+}
